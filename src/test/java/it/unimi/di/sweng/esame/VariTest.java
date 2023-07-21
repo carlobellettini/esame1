@@ -24,4 +24,15 @@ class VariTest {
 
 
   }
+
+  @Test
+  void presenterCheckNomeTroppoLungo() {
+    PostazioneView view = mock(PostazioneView.class);
+    PostazionePresenter SUT = new PostazionePresenter(view);
+    SUT.action("Arriva", "Dimitri Kunz d’Asburgo Lorena Piast Bielitz Bielice Belluno Spalia Rasponi Spinelli Romano Principe Dimitri Miesko Leopoldo");
+
+    verify(view).showError("nome troppo lungo");
+
+
+  }
 }
