@@ -131,4 +131,18 @@ class VariTest {
 
   }
 
+  @Test
+  void checkModelloArrivoBagninoGiàInAltraPostazione() {
+
+    Modello SUT = new Modello();
+    final var bagnino = mock(Bagnino.class);
+    final var area = mock(Area.class);
+    SUT.arriva(bagnino, mock(Area.class));
+
+    assertThatThrownBy(() -> SUT.arriva(bagnino, area))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("bagnino già presente in altra postazione");
+
+  }
+
 }
