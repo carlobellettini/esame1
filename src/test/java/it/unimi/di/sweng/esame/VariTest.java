@@ -13,6 +13,8 @@ import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -232,7 +234,7 @@ class VariTest {
     DisplayView view = mock(DisplayView.class);
 
     when(model.getState()).thenReturn(
-        List.of(
+        creaLista(
             new Postazione(new Bagnino("Carlo"), new Area(0), Bandiera.NONE),
             new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
         )
@@ -243,5 +245,9 @@ class VariTest {
 
     verify(view).set(0, "Carlo è alla postazione 0");
     verify(view).set(1, "Mattia è alla postazione 3");
+  }
+
+  private List<Postazione> creaLista(Postazione ... post) {
+    return new ArrayList<Postazione>(Arrays.asList(post));
   }
 }
