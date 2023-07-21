@@ -17,4 +17,8 @@ public class Modello {
   public @NotNull List<Postazione> getListaPostazioni() {
     return new ArrayList<>(postazioni.values());
   }
+
+  public void segnala(@NotNull Bagnino bagnino, @NotNull Bandiera bandiera) {
+
+  }
 }

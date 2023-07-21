@@ -82,4 +82,20 @@ class VariTest {
     //assertThat(SUT.getListaPostazioni()).extracting("bagnino", "area").contains(tuple(new Bagnino("Carlo"), new Area(1)));
     assertThat(SUT.getListaPostazioni()).containsExactly(new Postazione(bagnino, area, Bandiera.NONE));
   }
+
+
+  @Test
+  void checkModelloSegnalaBandiera() {
+
+    Modello SUT = new Modello();
+    final var bagnino = mock(Bagnino.class);
+    final var area = mock(Area.class);
+    final var bandiera = mock(Bandiera.class);
+
+    SUT.arriva(bagnino, area);
+    SUT.segnala(bagnino, bandiera);
+    //assertThat(SUT.getListaPostazioni()).extracting("bagnino", "area").contains(tuple(new Bagnino("Carlo"), new Area(1)));
+    assertThat(SUT.getListaPostazioni()).containsExactly(new Postazione(bagnino, area, bandiera));
+  }
+
 }
