@@ -6,7 +6,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.Mockito.*;
 
 import it.unimi.di.sweng.esame.model.*;
+import it.unimi.di.sweng.esame.presenters.DisplayPresenter;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
+import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
 import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
@@ -175,7 +177,7 @@ class VariTest {
         new Postazione(bagnino, pos, Bandiera.ROSSA)
     ));
 
-    Observer<List<Postazione>>  SUT = new PostazionePresenter(view, model, pos);
+    Observer<List<Postazione>> SUT = new PostazionePresenter(view, model, pos);
 
     SUT.update(model);
 
@@ -205,4 +207,23 @@ class VariTest {
     verify(view).addHandlers(any());
     verifyNoMoreInteractions(view);
   }*/
+
+
+  @Test
+  void testDisplayPresenter() {
+    DisplayView view = mock(DisplayView.class);
+
+    when(model.getState()).thenReturn(
+        List.of(
+            new Postazione(new Bagnino("Carlo"), new Area(0), Bandiera.NONE),
+            new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
+        )
+    );
+    DisplayPresenter SUT = new DisplayPresenter();
+
+    SUT.update(model);
+
+    verify(view).set(0, "[0] Carlo segnala ancora nulla");
+    verify(view).set(3, "[3] Mattia segnala pericolo meduse");
+  }
 }
