@@ -1,15 +1,15 @@
 package it.unimi.di.sweng.esame.presenters;
 
-import it.unimi.di.sweng.esame.model.Area;
-import it.unimi.di.sweng.esame.model.Bagnino;
-import it.unimi.di.sweng.esame.model.Bandiera;
-import it.unimi.di.sweng.esame.model.Modello;
+import it.unimi.di.sweng.esame.Observable;
+import it.unimi.di.sweng.esame.Observer;
+import it.unimi.di.sweng.esame.model.*;
 import it.unimi.di.sweng.esame.views.PostazioneView;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 
 
-public class PostazionePresenter implements Presenter {
+public class PostazionePresenter implements Presenter, Observer<List<Postazione>> {
   private @NotNull final PostazioneView view;
   private @NotNull final Modello model;
   private @NotNull final Area pos;
@@ -42,6 +42,11 @@ public class PostazionePresenter implements Presenter {
       else
         view.showError(e.getMessage());
     }
+
+  }
+
+  @Override
+  public void update(Observable<List<Postazione>> subj) {
 
   }
 }
