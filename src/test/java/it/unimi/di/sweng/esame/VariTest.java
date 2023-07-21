@@ -2,6 +2,7 @@ package it.unimi.di.sweng.esame;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.assertj.core.groups.Tuple.tuple;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
@@ -96,6 +97,21 @@ class VariTest {
     SUT.segnala(bagnino, bandiera);
     //assertThat(SUT.getListaPostazioni()).extracting("bagnino", "area").contains(tuple(new Bagnino("Carlo"), new Area(1)));
     assertThat(SUT.getListaPostazioni()).containsExactly(new Postazione(bagnino, area, bandiera));
+  }
+
+  @Test
+  void checkModelloSegnalaBandieraDaBagninoNonPresente() {
+
+    Modello SUT = new Modello();
+    final var bagnino = mock(Bagnino.class);
+    final var area = mock(Area.class);
+    final var bandiera = mock(Bandiera.class);
+
+    assertThatThrownBy(() -> SUT.segnala(bagnino, bandiera))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("postazione non presidiata");
+
+
   }
 
 }
