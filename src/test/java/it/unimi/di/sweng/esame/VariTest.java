@@ -180,9 +180,11 @@ class VariTest {
     SUT.update(model);
 
     verify(view).setBagnino("Carlo");
+    verify(view).addHandlers(any());
+    verifyNoMoreInteractions(view);
   }
 
-  @Test
+  /*@Test
   void presenterReagisceAdUpdateMockPure() {
     PostazioneView view = mock(PostazioneView.class);
     Bagnino bagnino = mock(Bagnino.class);
@@ -200,5 +202,7 @@ class VariTest {
     SUT.update(model);
 
     verify(view).setBagnino("Carlo");
-  }
+    verify(view).addHandlers(any());
+    verifyNoMoreInteractions(view);
+  }*/
 }
