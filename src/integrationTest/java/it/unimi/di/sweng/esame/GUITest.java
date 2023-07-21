@@ -113,7 +113,7 @@ public class GUITest {
     verifyThat(errorMessage[1], hasText("Indicare colore bandiera"));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaBandieraSbagliata(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("TURCHESE");
