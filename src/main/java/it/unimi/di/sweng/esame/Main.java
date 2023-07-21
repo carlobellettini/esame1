@@ -1,6 +1,7 @@
 package it.unimi.di.sweng.esame;
 
 
+import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
 import javafx.application.Application;
@@ -51,7 +52,15 @@ public class Main extends Application {
     gridPane.add(rightSideView, 1, 2);
 
     //TODO creare presenters e connettere model e view
+    for (int i = 0; i < NUMPOSTAZIONI; i++) {
+      new PostazionePresenter(postazioneView[i]);
+    }
 
+    for (int i = 0; i < NUMPOSTAZIONI; i++) {
+      leftSideView.set(i,"postazione non presidiata");
+      rightSideView.set(i,"");
+
+    }
 
     //model.notifyObservers();
 
