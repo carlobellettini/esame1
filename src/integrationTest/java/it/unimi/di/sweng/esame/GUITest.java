@@ -121,7 +121,7 @@ public class GUITest {
     verifyThat(errorMessage[1], hasText("Bandiera non valida"));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaBandieraDaPostazioneVuota(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("ROSSA");
@@ -145,7 +145,7 @@ public class GUITest {
   }
 
 
-  @Test@Disabled
+  @Test
   public void testArrivaBagninoFail(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
@@ -159,7 +159,7 @@ public class GUITest {
     verifyThat(errorMessage[2], hasText("postazione già occupata"));
   }
 
-  @Test@Disabled
+  @Test
   public void testArrivaBagninoFail2(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);

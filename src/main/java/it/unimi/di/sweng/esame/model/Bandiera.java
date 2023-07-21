@@ -4,5 +4,6 @@ public enum Bandiera {
   ROSSA,
   GIALLA,
   VERDE,
-  VIOLA;
+  VIOLA,
+  NONE;
 }
