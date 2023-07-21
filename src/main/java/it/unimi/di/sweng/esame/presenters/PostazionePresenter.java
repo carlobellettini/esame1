@@ -19,6 +19,7 @@ public class PostazionePresenter implements Presenter, Observer<List<Postazione>
     this.model = model;
     this.pos = pos;
     view.addHandlers(this);
+    model.addObserver(this);
   }
 
   @Override

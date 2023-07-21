@@ -3,6 +3,8 @@ package it.unimi.di.sweng.esame;
 
 import it.unimi.di.sweng.esame.model.Area;
 import it.unimi.di.sweng.esame.model.Modello;
+import it.unimi.di.sweng.esame.presenters.DisplayPresenter;
+import it.unimi.di.sweng.esame.presenters.DisplayPresenter2;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
@@ -61,13 +63,16 @@ public class Main extends Application {
       new PostazionePresenter(postazioneView[i], model, new Area(i));
     }
 
-    for (int i = 0; i < NUMPOSTAZIONI; i++) {
+    /*for (int i = 0; i < NUMPOSTAZIONI; i++) {
       leftSideView.set(i,"postazione non presidiata");
       rightSideView.set(i,"");
 
-    }
+    }*/
 
-    //model.notifyObservers();
+    new DisplayPresenter(leftSideView,model);
+    new DisplayPresenter2(rightSideView,model);
+
+    model.notifyObservers();
 
     Scene scene = new Scene(gridPane);
     primaryStage.setScene(scene);

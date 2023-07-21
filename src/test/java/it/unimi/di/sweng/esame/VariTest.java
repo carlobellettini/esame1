@@ -219,7 +219,7 @@ class VariTest {
             new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
         )
     );
-    DisplayPresenter SUT = new DisplayPresenter(view);
+    DisplayPresenter SUT = new DisplayPresenter(view, model);
 
     SUT.update(model);
 
@@ -237,7 +237,7 @@ class VariTest {
             new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
         )
     );
-    DisplayPresenter2 SUT = new DisplayPresenter2(view);
+    DisplayPresenter2 SUT = new DisplayPresenter2(view, model);
 
     SUT.update(model);
 
