@@ -159,7 +159,7 @@ public class GUITest {
     verifyThat(errorMessage[2], hasText("postazione già occupata"));
   }
 
-  @Test@Disabled
+  @Test
   public void testArrivaBagninoFail2(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
