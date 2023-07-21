@@ -250,4 +250,13 @@ class VariTest {
   private List<Postazione> creaLista(Postazione ... post) {
     return new ArrayList<Postazione>(Arrays.asList(post));
   }
+
+
+  @Test
+  void modelloBagninoVaViaMaNonEraLì() {
+    Modello SUT = new Modello();
+    assertThatThrownBy(() -> SUT.vaVia(new Bagnino("Carlo")))
+        .isInstanceOf(IllegalArgumentException.class)
+        .hasMessage("Bagnino non presente");
+  }
 }

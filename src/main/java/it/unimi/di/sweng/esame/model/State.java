@@ -24,4 +24,11 @@ public class State {
 
     postazioni.put(bagnino, postazioni.get(bagnino).segnala(bandiera));
   }
+
+  public void vaVia(Bagnino bagnino) {
+    if (!postazioni.containsKey(bagnino)) throw new IllegalArgumentException("Bagnino non presente");
+
+    var x = postazioni.remove(bagnino);
+    areeOccupate.remove(x.area());
+  }
 }

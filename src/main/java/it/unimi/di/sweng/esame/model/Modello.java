@@ -40,4 +40,10 @@ public class Modello extends State implements Observable<@NotNull List<@NotNull 
     super.segnala(bagnino, bandiera);
     notifyObservers();
   }
+
+  @Override
+  public void vaVia(Bagnino bagnino) {
+    super.vaVia(bagnino);
+    notifyObservers();
+  }
 }

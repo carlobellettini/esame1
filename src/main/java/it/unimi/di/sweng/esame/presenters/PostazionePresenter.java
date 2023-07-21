@@ -25,16 +25,20 @@ public class PostazionePresenter implements Presenter, Observer<List<Postazione>
   @Override
   public void action(@NotNull String comando, @NotNull String args) {
     try {
-      if (comando.equals("Arriva")) {
-        Bagnino bagnino = new Bagnino(args);
-        model.arriva(bagnino, pos);
-      } else if (comando.equals("Segnala")) {
-        String[] argomenti = args.split(",", 2);
-        if (argomenti.length != 2)  throw new IllegalArgumentException("numero parametri non valido");
-        if (argomenti[1].isBlank()) throw new IllegalArgumentException("Indicare colore bandiera");
-        Bagnino bagnino = new Bagnino(argomenti[0]);
-        Bandiera bandiera = Bandiera.valueOf(argomenti[1]);
-        model.segnala(bagnino, bandiera);
+      switch (comando) {
+        case "Arriva" -> {
+          model.arriva(new Bagnino(args), pos);
+        }
+        case "Segnala" -> {
+          String[] argomenti = args.split(",", 2);
+          if (argomenti.length != 2) throw new IllegalArgumentException("numero parametri non valido");
+          if (argomenti[1].isBlank()) throw new IllegalArgumentException("Indicare colore bandiera");
+
+          model.segnala(new Bagnino(argomenti[0]), Bandiera.valueOf(argomenti[1]));
+        }
+        case "Va via" -> model.vaVia(new Bagnino(args));
+
+        default -> throw new IllegalStateException("Unknown command: " + comando);
       }
       view.showSuccess();
     } catch (IllegalArgumentException e) {

@@ -96,7 +96,7 @@ public class GUITest {
   }
 
 
-  @Test@Disabled
+  @Test
   public void testVaViaNonpresenteFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("");
@@ -173,7 +173,7 @@ public class GUITest {
     verifyThat(errorMessage[0], hasText("bagnino già presente in altra postazione"));
   }
 
-  @Test@Disabled
+  @Test
   public void testOrdinamentoListaBagnini(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[0]);
     robot.write("Violetta");
