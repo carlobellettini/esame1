@@ -3,13 +3,15 @@ package it.unimi.di.sweng.esame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.*;
 
 import it.unimi.di.sweng.esame.model.*;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.PostazioneView;
+import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 
 class VariTest {
@@ -145,4 +147,22 @@ class VariTest {
 
   }
 
+
+  @Test
+  void modelloChiamaUpdateAfrontediCambioStato() {
+
+    Observer<List<Postazione>>  obs = mock(Observer.class);
+    Bagnino bagnino = mock(Bagnino.class);
+
+    Modello SUT = new Modello();
+    Area area = mock(Area.class);
+    SUT.addObserver(obs);
+
+    SUT.arriva(bagnino, area);
+    SUT.segnala(bagnino, Bandiera.ROSSA);
+
+    verify(obs, times(2)).update(SUT);
+
+
+  }
 }
