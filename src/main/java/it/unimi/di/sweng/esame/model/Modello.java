@@ -19,6 +19,8 @@ public class Modello {
   }
 
   public void segnala(@NotNull Bagnino bagnino, @NotNull Bandiera bandiera) {
+    if (!postazioni.containsKey(bagnino)) throw new IllegalArgumentException("postazione non presidiata");
+
     postazioni.put(bagnino, new Postazione(bagnino, postazioni.get(bagnino).area(), bandiera));
   }
 }
