@@ -66,7 +66,7 @@ public class GUITest {
     robot.doubleClickOn(field).clickOn(field); //triplo click per selezionare tutto
   }
 
-  @Test@Disabled
+  @Test
   public void testArrivaOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Carlo");
@@ -130,7 +130,7 @@ public class GUITest {
   }
 
 
-  @Test@Disabled
+  @Test
   public void testSegnalaBandieraOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Carlo");

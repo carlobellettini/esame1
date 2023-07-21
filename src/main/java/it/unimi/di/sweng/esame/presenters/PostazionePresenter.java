@@ -19,6 +19,7 @@ public class PostazionePresenter implements Presenter, Observer<List<Postazione>
     this.model = model;
     this.pos = pos;
     view.addHandlers(this);
+    model.addObserver(this);
   }
 
   @Override
@@ -48,8 +49,10 @@ public class PostazionePresenter implements Presenter, Observer<List<Postazione>
   @Override
   public void update(Observable<List<Postazione>> subj) {
     for (Postazione postazione : subj.getState()) {
-      if (postazione.area().equals(pos))
+      if (postazione.area().equals(pos)) {
         view.setBagnino(postazione.bagnino().nome());
+        return;
+      }
     }
     view.setBagnino("postazione non presidiata");
   }
