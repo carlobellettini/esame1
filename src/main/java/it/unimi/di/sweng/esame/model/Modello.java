@@ -25,6 +25,19 @@ public class Modello extends State implements Observable<@NotNull List<@NotNull 
 
   @Override
   public List<Postazione> getState() {
-    return null;
+    return getListaPostazioni();
+  }
+
+
+  @Override
+  public void arriva(@NotNull Bagnino bagnino, @NotNull Area area) {
+    super.arriva(bagnino, area);
+    notifyObservers();
+  }
+
+  @Override
+  public void segnala(@NotNull Bagnino bagnino, @NotNull Bandiera bandiera) {
+    super.segnala(bagnino, bandiera);
+    notifyObservers();
   }
 }
