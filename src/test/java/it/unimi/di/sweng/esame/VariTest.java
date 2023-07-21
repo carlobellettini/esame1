@@ -10,7 +10,6 @@ import it.unimi.di.sweng.esame.presenters.DisplayPresenter;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
-import org.jetbrains.annotations.NotNull;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
@@ -219,7 +218,7 @@ class VariTest {
             new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
         )
     );
-    DisplayPresenter SUT = new DisplayPresenter();
+    DisplayPresenter SUT = new DisplayPresenter(view);
 
     SUT.update(model);
 

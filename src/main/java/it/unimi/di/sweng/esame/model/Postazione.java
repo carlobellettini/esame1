@@ -6,4 +6,8 @@ public record Postazione(@NotNull Bagnino bagnino, @NotNull Area area, @NotNull 
   public Postazione segnala(Bandiera bandiera) {
     return new Postazione(bagnino, area, bandiera);
   }
+
+  public String format1() {
+    return "[" + area.pos() + "] " + bagnino.nome() + " segnala " + bandiera.messaggio;
+  }
 }
