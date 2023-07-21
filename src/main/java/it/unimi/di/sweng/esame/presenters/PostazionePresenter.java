@@ -7,6 +7,7 @@ public class PostazionePresenter implements Presenter{
 
   public PostazionePresenter(PostazioneView view) {
     this.view = view;
+    view.addHandlers(this);
   }
 
   @Override

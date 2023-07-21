@@ -18,7 +18,7 @@ class VariTest {
   void presenterCheckNomeVuoto() {
     PostazioneView view = mock(PostazioneView.class);
     PostazionePresenter SUT = new PostazionePresenter(view);
-    SUT.action("Arrriva", "");
+    SUT.action("Arriva", "");
 
     verify(view).showError("nome vuoto");
 
