@@ -1,5 +1,6 @@
 package it.unimi.di.sweng.esame.presenters;
 
+import it.unimi.di.sweng.esame.model.Bagnino;
 import it.unimi.di.sweng.esame.views.PostazioneView;
 import org.jetbrains.annotations.NotNull;
 
@@ -13,7 +14,13 @@ public class PostazionePresenter implements Presenter{
 
   @Override
   public void action(@NotNull String comando, @NotNull String args) {
-    if (args.isBlank()) view.showError("nome vuoto");
-    else if (args.length()>30) view.showError("nome troppo lungo");
+    try {
+      Bagnino bagnino = new Bagnino(args);
+      //model.arriva(bagnino, pos);
+      view.showSuccess();
+    } catch (IllegalArgumentException e) {
+      view.showError(e.getMessage());
+    }
+
   }
 }
