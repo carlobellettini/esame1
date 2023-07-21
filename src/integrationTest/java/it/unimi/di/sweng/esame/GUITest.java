@@ -145,7 +145,7 @@ public class GUITest {
   }
 
 
-  @Test@Disabled
+  @Test
   public void testArrivaBagninoFail(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
