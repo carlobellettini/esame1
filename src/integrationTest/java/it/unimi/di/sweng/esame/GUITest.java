@@ -105,7 +105,7 @@ public class GUITest {
     verifyThat(elencoPostazioni[2], hasText("postazione non presidiata"));
   }
 
-  @Test@Disabled
+  @Test
   public void testSegnalaBandieraVuota(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("");
