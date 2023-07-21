@@ -151,7 +151,7 @@ class VariTest {
   @Test
   void modelloChiamaUpdateAfrontediCambioStato() {
 
-    Observer<List<Postazione>>  obs = mock(Observer.class);
+    Observer<List<Postazione>> obs = mock(Observer.class);
     Bagnino bagnino = mock(Bagnino.class);
 
     Modello SUT = new Modello();
@@ -164,5 +164,41 @@ class VariTest {
     verify(obs, times(2)).update(SUT);
 
 
+  }
+
+
+  @Test
+  void presenterReagisceAdUpdate() {
+    PostazioneView view = mock(PostazioneView.class);
+    Bagnino bagnino = new Bagnino("Carlo");
+    when(model.getState()).thenReturn(List.of(
+        new Postazione(bagnino, pos, Bandiera.ROSSA)
+    ));
+
+    Observer<List<Postazione>>  SUT = new PostazionePresenter(view, model, pos);
+
+    SUT.update(model);
+
+    verify(view).setBagnino("Carlo");
+  }
+
+  @Test
+  void presenterReagisceAdUpdateMockPure() {
+    PostazioneView view = mock(PostazioneView.class);
+    Bagnino bagnino = mock(Bagnino.class);
+    Postazione postazione = mock(Postazione.class);
+    when(postazione.bagnino()).thenReturn(bagnino);
+    when(postazione.area()).thenReturn(pos);
+    when(bagnino.nome()).thenReturn("Carlo");
+    when(model.getState()).thenReturn(List.of(
+        postazione
+    ));
+
+
+    Observer<List<Postazione>> SUT = new PostazionePresenter(view, model, pos);
+
+    SUT.update(model);
+
+    verify(view).setBagnino("Carlo");
   }
 }
