@@ -51,4 +51,12 @@ class VariTest {
     verify(view).showError("Bandiera non valida");
   }
 
+  @Test
+  void presenterCheckBandieraNonSpecificata() {
+    PostazioneView view = mock(PostazioneView.class);
+    PostazionePresenter SUT = new PostazionePresenter(view);
+    SUT.action("Segnala", "Carlo,");
+
+    verify(view).showError("Indicare colore bandiera");
+  }
 }
