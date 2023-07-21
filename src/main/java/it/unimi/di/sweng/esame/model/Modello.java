@@ -19,6 +19,6 @@ public class Modello {
   }
 
   public void segnala(@NotNull Bagnino bagnino, @NotNull Bandiera bandiera) {
-
+    postazioni.put(bagnino, new Postazione(bagnino, postazioni.get(bagnino).area(), bandiera));
   }
 }
