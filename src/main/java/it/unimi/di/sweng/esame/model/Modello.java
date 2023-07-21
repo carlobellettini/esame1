@@ -10,6 +10,7 @@ public class Modello {
 
   public void arriva(@NotNull Bagnino bagnino, @NotNull Area area) {
     if (areeOccupate.contains(area)) throw new IllegalArgumentException("postazione già occupata");
+    if (postazioni.containsKey(bagnino)) throw new IllegalArgumentException("bagnino già presente in altra postazione");
     postazioni.put(bagnino, new Postazione(bagnino, area, Bandiera.NONE));
     areeOccupate.add(area);
   }
