@@ -86,7 +86,7 @@ public class GUITest {
     verifyThat(elencoPostazioni[2], hasText("postazione non presidiata"));
   }
 
-  @Test@Disabled
+  @Test
   public void testArrivaNomeLungoFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Nometroppolungomapropriopropriopriprio");
