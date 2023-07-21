@@ -77,7 +77,7 @@ public class GUITest {
     verifyThat(bagniniNomi[2] , hasText("Carlo"));
   }
 
-  @Test@Disabled
+  @Test
   public void testArrivaNomeVuotoFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("");
