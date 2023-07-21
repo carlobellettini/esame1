@@ -23,6 +23,8 @@ public class PostazionePresenter implements Presenter {
         view.showSuccess();
       } else if (comando.equals("Segnala")) {
         String[] argomenti = args.split(",", 2);
+        if (argomenti.length != 2)  throw new IllegalArgumentException("numero parametri non valido");
+        if (argomenti[1].isBlank()) throw new IllegalArgumentException("Indicare colore bandiera");
         Bagnino bagnino = new Bagnino(argomenti[0]);
         Bandiera bandiera = Bandiera.valueOf(argomenti[1]);
         //model.segnala(bagnino, bandiera);
