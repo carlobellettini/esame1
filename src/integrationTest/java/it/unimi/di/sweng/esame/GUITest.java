@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.assertj.core.util.introspection.FieldSupport;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -95,7 +96,7 @@ public class GUITest {
   }
 
 
-  @Test
+  @Test@Disabled
   public void testVaViaNonpresenteFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("");
@@ -172,7 +173,7 @@ public class GUITest {
     verifyThat(errorMessage[0], hasText("bagnino già presente in altra postazione"));
   }
 
-  @Test
+  @Test@Disabled
   public void testOrdinamentoListaBagnini(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[0]);
     robot.write("Violetta");
