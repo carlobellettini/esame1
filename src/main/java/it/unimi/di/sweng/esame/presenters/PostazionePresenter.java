@@ -20,7 +20,6 @@ public class PostazionePresenter implements Presenter {
       if (comando.equals("Arriva")) {
         Bagnino bagnino = new Bagnino(args);
         //model.arriva(bagnino, pos);
-        view.showSuccess();
       } else if (comando.equals("Segnala")) {
         String[] argomenti = args.split(",", 2);
         if (argomenti.length != 2)  throw new IllegalArgumentException("numero parametri non valido");
@@ -28,8 +27,8 @@ public class PostazionePresenter implements Presenter {
         Bagnino bagnino = new Bagnino(argomenti[0]);
         Bandiera bandiera = Bandiera.valueOf(argomenti[1]);
         //model.segnala(bagnino, bandiera);
-        view.showSuccess();
       }
+      view.showSuccess();
     } catch (IllegalArgumentException e) {
       if (e.getMessage().startsWith("No enum constant it.unimi.di.sweng.esame.model.Bandiera."))
         view.showError("Bandiera non valida");
