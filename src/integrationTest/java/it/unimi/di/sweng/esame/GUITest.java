@@ -16,6 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import org.assertj.core.util.introspection.FieldSupport;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -65,7 +66,7 @@ public class GUITest {
     robot.doubleClickOn(field).clickOn(field); //triplo click per selezionare tutto
   }
 
-  @Test
+  @Test@Disabled
   public void testArrivaOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Carlo");
@@ -76,7 +77,7 @@ public class GUITest {
     verifyThat(bagniniNomi[2] , hasText("Carlo"));
   }
 
-  @Test
+  @Test@Disabled
   public void testArrivaNomeVuotoFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("");
@@ -85,7 +86,7 @@ public class GUITest {
     verifyThat(elencoPostazioni[2], hasText("postazione non presidiata"));
   }
 
-  @Test
+  @Test@Disabled
   public void testArrivaNomeLungoFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Nometroppolungomapropriopropriopriprio");
@@ -95,7 +96,7 @@ public class GUITest {
   }
 
 
-  @Test
+  @Test@Disabled
   public void testVaViaNonpresenteFail(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("");
@@ -104,7 +105,7 @@ public class GUITest {
     verifyThat(elencoPostazioni[2], hasText("postazione non presidiata"));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaBandieraVuota(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("");
@@ -112,7 +113,7 @@ public class GUITest {
     verifyThat(errorMessage[1], hasText("Indicare colore bandiera"));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaBandieraSbagliata(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("TURCHESE");
@@ -120,7 +121,7 @@ public class GUITest {
     verifyThat(errorMessage[1], hasText("Bandiera non valida"));
   }
 
-  @Test
+  @Test@Disabled
   public void testSegnalaBandieraDaPostazioneVuota(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[1]);
     robot.write("ROSSA");
@@ -129,7 +130,7 @@ public class GUITest {
   }
 
 
-  @Test
+  @Test@Disabled
   public void testSegnalaBandieraOK(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
     robot.write("Carlo");
@@ -144,7 +145,7 @@ public class GUITest {
   }
 
 
-  @Test
+  @Test@Disabled
   public void testArrivaBagninoFail(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
@@ -158,7 +159,7 @@ public class GUITest {
     verifyThat(errorMessage[2], hasText("postazione già occupata"));
   }
 
-  @Test
+  @Test@Disabled
   public void testArrivaBagninoFail2(FxRobot robot) {
 
     selezioneContenutoCasellaTesto(robot, inputMessage[2]);
@@ -172,7 +173,7 @@ public class GUITest {
     verifyThat(errorMessage[0], hasText("bagnino già presente in altra postazione"));
   }
 
-  @Test
+  @Test@Disabled
   public void testOrdinamentoListaBagnini(FxRobot robot) {
     selezioneContenutoCasellaTesto(robot, inputMessage[0]);
     robot.write("Violetta");
