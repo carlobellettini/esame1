@@ -3,7 +3,6 @@ package it.unimi.di.sweng.esame;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.assertj.core.groups.Tuple.tuple;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
@@ -15,10 +14,13 @@ import org.junit.jupiter.api.Test;
 
 class VariTest {
 
+  private Modello model = mock(Modello.class);
+  private Area pos = mock(Area.class);
+
   @Test
   void presenterCheckNomeVuoto() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Arriva", "");
 
     verify(view).showError("nome vuoto");
@@ -27,7 +29,7 @@ class VariTest {
   @Test
   void presenterCheckNomeTroppoLungo() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Arriva", "Dimitri Kunz d’Asburgo Lorena Piast Bielitz Bielice Belluno Spalia Rasponi Spinelli Romano Principe Dimitri Miesko Leopoldo");
 
     verify(view).showError("nome troppo lungo");
@@ -36,7 +38,7 @@ class VariTest {
   @Test
   void presenterCheckNomeLungOK() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Arriva", "Carlo");
 
     verify(view).showSuccess();
@@ -46,7 +48,7 @@ class VariTest {
   @Test
   void presenterCheckBandieraValida() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Segnala", "Carlo,TURCHESE");
 
     verify(view).showError("Bandiera non valida");
@@ -55,7 +57,7 @@ class VariTest {
   @Test
   void presenterCheckBandieraNonSpecificata() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Segnala", "Carlo,");
 
     verify(view).showError("Indicare colore bandiera");
@@ -65,7 +67,7 @@ class VariTest {
   @Test
   void presenterCheckBandieraOK() {
     PostazioneView view = mock(PostazioneView.class);
-    PostazionePresenter SUT = new PostazionePresenter(view);
+    PostazionePresenter SUT = new PostazionePresenter(view, model, pos);
     SUT.action("Segnala", "Carlo,ROSSA");
 
     verify(view).showSuccess();

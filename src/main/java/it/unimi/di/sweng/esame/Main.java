@@ -1,6 +1,8 @@
 package it.unimi.di.sweng.esame;
 
 
+import it.unimi.di.sweng.esame.model.Area;
+import it.unimi.di.sweng.esame.model.Modello;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
@@ -52,8 +54,11 @@ public class Main extends Application {
     gridPane.add(rightSideView, 1, 2);
 
     //TODO creare presenters e connettere model e view
+
+    Modello model = new Modello();
+
     for (int i = 0; i < NUMPOSTAZIONI; i++) {
-      new PostazionePresenter(postazioneView[i]);
+      new PostazionePresenter(postazioneView[i], model, new Area(i));
     }
 
     for (int i = 0; i < NUMPOSTAZIONI; i++) {
