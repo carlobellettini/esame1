@@ -3,14 +3,18 @@ package it.unimi.di.sweng.esame.model;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Modello {
-  public void arriva(@NotNull Bagnino bagnino, @NotNull Area area) {
+  private final @NotNull Map<Bagnino, Postazione> postazioni = new HashMap<>();
 
+  public void arriva(@NotNull Bagnino bagnino, @NotNull Area area) {
+    postazioni.put(bagnino, new Postazione(bagnino, area, Bandiera.NONE));
   }
 
   public @NotNull List<Postazione> getListaPostazioni() {
-    return new ArrayList<>();
+    return new ArrayList<>(postazioni.values());
   }
 }
