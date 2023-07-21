@@ -7,6 +7,7 @@ import static org.mockito.Mockito.*;
 
 import it.unimi.di.sweng.esame.model.*;
 import it.unimi.di.sweng.esame.presenters.DisplayPresenter;
+import it.unimi.di.sweng.esame.presenters.DisplayPresenter2;
 import it.unimi.di.sweng.esame.presenters.PostazionePresenter;
 import it.unimi.di.sweng.esame.views.DisplayView;
 import it.unimi.di.sweng.esame.views.PostazioneView;
@@ -224,5 +225,23 @@ class VariTest {
 
     verify(view).set(0, "[0] Carlo segnala ancora nulla");
     verify(view).set(3, "[3] Mattia segnala pericolo meduse");
+  }
+
+  @Test
+  void testDisplayPresenter2() {
+    DisplayView view = mock(DisplayView.class);
+
+    when(model.getState()).thenReturn(
+        List.of(
+            new Postazione(new Bagnino("Carlo"), new Area(0), Bandiera.NONE),
+            new Postazione(new Bagnino("Mattia"), new Area(3), Bandiera.VIOLA)
+        )
+    );
+    DisplayPresenter2 SUT = new DisplayPresenter2(view);
+
+    SUT.update(model);
+
+    verify(view).set(0, "Carlo è alla postazione 0");
+    verify(view).set(1, "Mattia è alla postazione 3");
   }
 }
