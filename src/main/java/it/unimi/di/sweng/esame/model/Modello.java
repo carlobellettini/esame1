@@ -1,27 +1,30 @@
 package it.unimi.di.sweng.esame.model;
 
+import it.unimi.di.sweng.esame.Observable;
+import it.unimi.di.sweng.esame.Observer;
 import org.jetbrains.annotations.NotNull;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-public class Modello {
-  private final @NotNull Map<Bagnino, Postazione> postazioni = new HashMap<>();
-  private final @NotNull Set<Area> areeOccupate = new HashSet<>();
 
-  public void arriva(@NotNull Bagnino bagnino, @NotNull Area area) {
-    if (areeOccupate.contains(area)) throw new IllegalArgumentException("postazione già occupata");
-    if (postazioni.containsKey(bagnino)) throw new IllegalArgumentException("bagnino già presente in altra postazione");
-    postazioni.put(bagnino, new Postazione(bagnino, area, Bandiera.NONE));
-    areeOccupate.add(area);
+public class Modello extends State implements Observable<@NotNull List<@NotNull Postazione>> {
+  private final @NotNull List<Observer<List<Postazione>>> observers = new ArrayList<>();
+
+  @Override
+  public void notifyObservers() {
+    for (Observer<List<Postazione>> observer : observers) {
+      observer.update(this);
+    }
   }
 
-  public @NotNull List<Postazione> getListaPostazioni() {
-    return new ArrayList<>(postazioni.values());
+  @Override
+  public void addObserver(@NotNull Observer<List<Postazione>> o) {
+    observers.add(o);
   }
 
-  public void segnala(@NotNull Bagnino bagnino, @NotNull Bandiera bandiera) {
-    if (!postazioni.containsKey(bagnino)) throw new IllegalArgumentException("postazione non presidiata");
-
-    postazioni.put(bagnino, postazioni.get(bagnino).segnala(bandiera));
+  @Override
+  public List<Postazione> getState() {
+    return null;
   }
 }
